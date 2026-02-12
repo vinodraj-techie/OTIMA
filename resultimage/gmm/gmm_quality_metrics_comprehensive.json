@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "num_clusters": 2,
+    "num_skus": 1000,
+    "num_features_original": 4,
+    "num_features_used": 4,
+    "use_pca": false,
+    "scaler_type": "RobustScaler",
+    "covariance_type": "spherical",
+    "n_init": 10,
+    "converged": true
+  },
+  "information_criteria": {
+    "bic_score": 7648.161781849811,
+    "aic_score": 7594.176473781007
+  },
+  "quality_metrics": {
+    "silhouette_score": 0.21869864043967793,
+    "davies_bouldin_index": 1.6274989468546477,
+    "calinski_harabasz_score": 288.42976195105035
+  },
+  "confidence_metrics": {
+    "mean_confidence": 0.8231971150491582,
+    "median_confidence": 0.8658067587291429,
+    "min_confidence": 0.5028248304942927,
+    "max_confidence": 0.9996379637421312,
+    "std_confidence": 0.14624798496695673,
+    "low_confidence_count": 0,
+    "low_confidence_percentage": 0.0
+  },
+  "cluster_balance": {
+    "imbalance_ratio": 2.3670033670033668,
+    "cluster_sizes": [
+      703,
+      297
+    ],
+    "cluster_percentages": [
+      70.3,
+      29.7
+    ]
+  },
+  "pca_info": {
+    "explained_variance_ratio_2d": [
+      0.36865143375948334,
+      0.23298131337114822
+    ],
+    "cumulative_variance_2d": 0.6016327471306315
+  }
+}
