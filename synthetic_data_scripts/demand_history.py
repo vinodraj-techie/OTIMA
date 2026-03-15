@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime, timedelta
 from config import *
 
-sku_df = pd.read_csv("data/sku_master.csv")
+sku_df = pd.read_csv("data2/sku_master.csv")
 start_date = datetime(2024, 1, 1)
 
 rows = []
@@ -25,5 +25,5 @@ for _, sku in sku_df.iterrows():
         })
 
 df = pd.DataFrame(rows)
-df.to_csv("data/demand_history.csv", index=False)
+df.to_csv("data2/demand_history.csv", index=False)
 print("Demand history generated")

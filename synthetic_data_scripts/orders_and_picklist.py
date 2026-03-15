@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from config import *
 
-sku_df = pd.read_csv("data/sku_master.csv")
-inv_df = pd.read_csv("data/inventory_status.csv")
+sku_df = pd.read_csv("data2/sku_master.csv")
+inv_df = pd.read_csv("data2/inventory_status.csv")
 
 orders = []
 pick_rows = []
@@ -28,7 +28,7 @@ for order_id in range(NUM_ORDERS):
             "pick_qty": np.random.randint(1, 20)
         })
 
-pd.DataFrame(orders).to_csv("data/orders.csv", index=False)
-pd.DataFrame(pick_rows).to_csv("data/pick_list.csv", index=False)
+pd.DataFrame(orders).to_csv("data2/orders.csv", index=False)
+pd.DataFrame(pick_rows).to_csv("data2/pick_list.csv", index=False)
 
 print("Orders & pick list generated")

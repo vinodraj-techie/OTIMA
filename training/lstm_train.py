@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 import os
+from model_architecture.lstm import LSTMModel
 
 # -----------------------------
 # Config
@@ -84,23 +85,9 @@ val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE)
 # -----------------------------
 # LSTM Model
 # -----------------------------
-class LSTMModel(nn.Module):
-    def __init__(self, input_dim=2, hidden_dim=64):
-        super().__init__()
-        self.lstm = nn.LSTM(input_dim, hidden_dim, batch_first=True)
-        self.fc = nn.Linear(hidden_dim, 1)
-
-    def forward(self, x):
-        out, _ = self.lstm(x)
-        out = out[:, -1, :]
-        out = self.fc(out)
-        return out
-
-model = LSTMModel().to(DEVICE)
-
+model=LSTMModel().to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 loss_fn = nn.MSELoss()
-
 # -----------------------------
 # Training
 # -----------------------------

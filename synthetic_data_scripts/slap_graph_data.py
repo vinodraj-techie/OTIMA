@@ -4,10 +4,10 @@ from itertools import combinations
 from collections import Counter
 
 # Load base datasets
-sku_df = pd.read_csv("data/sku_master.csv")
-layout_df = pd.read_csv("data/warehouse_layout.csv")
-inv_df = pd.read_csv("data/inventory_status.csv")
-pick_df = pd.read_csv("data/pick_list.csv")
+sku_df = pd.read_csv("data2/sku_master.csv")
+layout_df = pd.read_csv("data2/warehouse_layout.csv")
+inv_df = pd.read_csv("data2/inventory_status.csv")
+pick_df = pd.read_csv("data2/pick_list.csv")
 
 # ===============================
 # 1️⃣ SKU NODE FEATURES
@@ -24,7 +24,7 @@ sku_features["pick_frequency"] = (
     pick_df.groupby("sku_id").size().reindex(sku_features["sku_id"]).fillna(0).values
 )
 
-sku_features.to_csv("derived_data/sku_node_features.csv", index=False)
+sku_features.to_csv("data2/sku_node_features.csv", index=False)
 
 # ===============================
 # 2️⃣ BIN NODE FEATURES
@@ -34,7 +34,7 @@ bin_features["distance_from_dispatch"] = np.sqrt(
     bin_features["x_coord"]**2 + bin_features["y_coord"]**2
 )
 
-bin_features.to_csv("derived_data/bin_node_features.csv", index=False)
+bin_features.to_csv("data2/bin_node_features.csv", index=False)
 
 # ===============================
 # 3️⃣ SKU → BIN EDGES
@@ -42,7 +42,7 @@ bin_features.to_csv("derived_data/bin_node_features.csv", index=False)
 sku_bin_edges = inv_df[["sku_id", "bin_id"]].copy()
 sku_bin_edges["edge_type"] = "stored_in"
 
-sku_bin_edges.to_csv("derived_data/sku_bin_edges.csv", index=False)
+sku_bin_edges.to_csv("data2/sku_bin_edges.csv", index=False)
 
 # ===============================
 # 4️⃣ BIN → BIN ADJACENCY EDGES
@@ -65,7 +65,7 @@ for _, b1 in layout_df.iterrows():
             )
         })
 
-pd.DataFrame(edges).to_csv("derived_data/bin_adjacency_edges.csv", index=False)
+pd.DataFrame(edges).to_csv("data2/bin_adjacency_edges.csv", index=False)
 
 # ===============================
 # 5️⃣ SKU → SKU CO-PICK EDGES
@@ -83,6 +83,6 @@ copick_edges = [{
     "co_pick_frequency": v
 } for k, v in copick_counter.items()]
 
-pd.DataFrame(copick_edges).to_csv("derived_data/sku_sku_copick_edges.csv", index=False)
+pd.DataFrame(copick_edges).to_csv("data2/sku_sku_copick_edges.csv", index=False)
 
 print("SLAP GNN graph dataset generated successfully")

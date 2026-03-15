@@ -26,5 +26,5 @@ df["abc_class"] = np.where(
     np.where(cumulative <= 0.9, "B", "C")
 )
 
-df.to_csv("data/sku_master.csv", index=False)
+df.to_csv("data2/sku_master.csv", index=False)
 print("SKU master generated")

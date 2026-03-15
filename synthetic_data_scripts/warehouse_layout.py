@@ -22,5 +22,5 @@ for zone in zones:
                 bin_id += 1
 
 df = pd.DataFrame(rows)
-df.to_csv("data/warehouse_layout.csv", index=False)
+df.to_csv("data2/warehouse_layout.csv", index=False)
 print("Warehouse layout generated")

@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-sku_df = pd.read_csv("data/sku_master.csv")
-layout_df = pd.read_csv("data/warehouse_layout.csv")
+sku_df = pd.read_csv("data2/sku_master.csv")
+layout_df = pd.read_csv("data2/warehouse_layout.csv")
 
 bins = layout_df["bin_id"].sample(len(sku_df)).values
 
@@ -14,5 +14,5 @@ df = pd.DataFrame({
     "safety_stock": np.random.randint(50, 500, len(sku_df))
 })
 
-df.to_csv("data/inventory_status.csv", index=False)
+df.to_csv("data2/inventory_status.csv", index=False)
 print("Inventory status generated")

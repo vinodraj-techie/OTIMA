@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 
 # Load datasets
-layout_df = pd.read_csv("data/warehouse_layout.csv")
-pick_df = pd.read_csv("data/pick_list.csv")
+layout_df = pd.read_csv("data2/warehouse_layout.csv")
+pick_df = pd.read_csv("data2/pick_list.csv")
 
 # Merge coordinates
 pick_df = pick_df.merge(
@@ -39,6 +39,6 @@ for order_id, group in pick_df.groupby("order_id"):
                 "reward": -distance
             })
 
-pd.DataFrame(episodes).to_csv("derived_data/dqn_episodes.csv", index=False)
+pd.DataFrame(episodes).to_csv("data2/dqn_episodes.csv", index=False)
 
 print("DQN routing dataset generated successfully")
