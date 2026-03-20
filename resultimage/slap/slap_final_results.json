@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "num_skus": 1000,
+    "num_bins": 1500,
+    "num_edges_train": 800,
+    "num_edges_val": 200,
+    "hidden_dim": 128,
+    "num_layers": 3,
+    "best_epoch": 16,
+    "best_val_loss": 0.0,
+    "final_train_loss": 0.09404473503430684,
+    "total_epochs": 37
+  },
+  "distance_metrics": {
+    "physical_avg": 9.951889897815139,
+    "physical_median": 11.0,
+    "physical_std": 7.230206598830007
+  },
+  "baselines": {
+    "random": 25.190830556662494,
+    "nearest": 17.4219162177143,
+    "velocity": 17.4219162177143,
+    "slap_gnn": 9.951889897815139
+  },
+  "improvements": {
+    "vs_random": 60.493998499056815,
+    "vs_nearest": 42.8771796773065,
+    "vs_velocity": 42.8771796773065
+  },
+  "utilization": {
+    "bins_used": 266,
+    "utilization_rate": 17.733333333333334,
+    "avg_skus_per_bin": 3.7593984962406015,
+    "imbalance_ratio": 79.0,
+    "gini_coefficient": 0.576263157894737
+  }
+}
