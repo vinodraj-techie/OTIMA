@@ -9,7 +9,7 @@ result_path = sys.argv[2]
 os.makedirs(result_path, exist_ok=True)
 
 model = joblib.load("models/gmm2/gmm_model.pkl")
-model.eval()
+
 
 features = pd.read_csv(f"{dataset_path}/gmm_features.csv")
 

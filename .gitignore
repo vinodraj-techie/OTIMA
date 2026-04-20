@@ -79,3 +79,15 @@ checkpoints/
 .coverage
 htmlcov/
 .pytest_cache/
+# ===============================
+# Node.js / Frontend
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/

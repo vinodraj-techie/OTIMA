@@ -22,7 +22,7 @@ pick_list = pd.read_csv(f"{dataset_path}/pick_list.csv")
 bins = pd.read_csv(f"{dataset_path}/warehouse_layout.csv")
 STATE_DIM=7
 model = DQN(STATE_DIM)
-model.load_state_dict(torch.load("models/dqn/dqn_route_optimizer.pt"))
+model.load_state_dict(torch.load("models/dqn_route_optimizer2.pt"))
 
 
 

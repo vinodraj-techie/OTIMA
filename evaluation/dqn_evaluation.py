@@ -35,7 +35,7 @@ class DQN(nn.Module):
 # Load Environment
 # -------------------------
 env = WarehouseEnv(
-    bin_file="../synthetic_data_scripts/derived_data/bin_node_features.csv",
+    bin_file="../synthetic_data_scripts/data/bin_node_features.csv",
     picklist_file="../synthetic_data_scripts/data/pick_list.csv",
     grid_size=10
 )
