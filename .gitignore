@@ -91,3 +91,7 @@ pnpm-debug.log*
 # Build outputs
 dist/
 build/
+
+# ML generated data
+*.npy
+synthetic_data_scripts/derived_data/
