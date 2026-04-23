@@ -25,7 +25,7 @@ def generate_gmm_features(input_path, output_path):
         "demand_std",
         "pick_frequency",
         "volume_cu_m",
-        
+        "weight_kg"
     ]]
 
     os.makedirs(output_path, exist_ok=True)

@@ -163,7 +163,8 @@ print("\n" + "="*70)
 print("MODEL SELECTION")
 print("="*70)
 
-k_range = range(2, min(11, len(X) // 50))  # Up to 10 clusters or data size limit
+# Increase the lower boundary to guarantee generating a 'more clusterified' baseline
+k_range = range(4, max(8, min(11, len(X) // 50)))  # Tests 4 to 7 clusters minimum
 covariance_types = ['full', 'tied', 'diag', 'spherical']
 n_init_values = [10, 20]  # Multiple initializations
 

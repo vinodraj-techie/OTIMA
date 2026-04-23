@@ -41,7 +41,7 @@ def generate_visualizations(results_path):
         df = pd.read_csv(gmm_file)
 
         plt.figure()
-        df["cluster"].value_counts().plot(kind="bar")
+        df["gmm_cluster"].value_counts().plot(kind="bar")
 
         plt.title("GMM Cluster Distribution")
         plt.xlabel("Cluster")

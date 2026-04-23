@@ -78,7 +78,7 @@ def run_pipeline(dataset_path):
 
     subprocess.run([
        sys.executable,
-        "inference/slap_inference.py",
+        "inference/slap_inference2.py",
         derived_path,
         results_path
     ])

@@ -41,3 +41,22 @@ A comprehensive dashboard to review optimization results elegantly grid-mapped.
 - [x] Tested syntax with an `npm run build` which compiled flawlessly.
 
 You can now start both your backends via `uvicorn api.main:app` and frontend via `npm run dev` in the `frontend` application to start playing with the application.
+
+
+
+# Navigate into the frontend folder we just created
+cd d:\OTIMA\frontend
+
+# Start the Vite development server
+npm run dev
+
+
+
+# Navigate to the root directory
+cd d:\OTIMA
+
+# Activate your virtual environment (if you are using one)
+.\venv\Scripts\activate
+
+# Start the Python server using Uvicorn
+uvicorn api.main:app --reload

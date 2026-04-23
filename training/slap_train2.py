@@ -3,6 +3,9 @@ import torch
 import pandas as pd
 import numpy as np
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from torch import nn
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
@@ -11,6 +14,7 @@ from sklearn.model_selection import train_test_split
 from model_architecture.slap import ImprovedSLAPGNN
 
 DATA_PATH = "../synthetic_data_scripts/derived_data/"
+DATA_PATH2="../synthetic_data_scripts/data/"
 MODEL_PATH = "../models/slap_fixed/"
 os.makedirs(MODEL_PATH, exist_ok=True)
 
@@ -43,10 +47,10 @@ print(f"Using device: {DEVICE}")
 print("\nLoading data...")
 sku_df = pd.read_csv(DATA_PATH + "sku_node_features_scaled.csv")
 bin_df_scaled = pd.read_csv(DATA_PATH + "bin_node_features_scaled.csv")
-edges_df = pd.read_csv(DATA_PATH + "sku_bin_edges.csv")
+edges_df = pd.read_csv(DATA_PATH2 + "sku_bin_edges.csv")
 
 # Load UNSCALED bin data for physical distances
-bin_df_unscaled = pd.read_csv(DATA_PATH + "bin_node_features.csv")
+bin_df_unscaled = pd.read_csv(DATA_PATH2 + "bin_node_features.csv")
 
 # Ensure physical distances exist
 if "distance_from_dispatch" not in bin_df_unscaled.columns:
@@ -146,7 +150,7 @@ model = ImprovedSLAPGNN(
 ).to(DEVICE)
 
 optimizer = Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-5)
-scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=15, verbose=True)
+scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=15)
 
 print(f"\nModel parameters: {sum(p.numel() for p in model.parameters()):,}")
 
@@ -383,6 +387,7 @@ history = pd.DataFrame({
 history.to_csv(MODEL_PATH + "training_history.csv", index=False)
 
 # Save metadata
+# Save metadata
 import json
 metadata = {
     'num_skus': num_skus,
@@ -391,18 +396,17 @@ metadata = {
     'num_layers': NUM_LAYERS,
     'best_epoch': int(checkpoint['epoch']),
     'best_val_loss': float(best_val_loss),
-    'total_epochs': len(train_losses),
-    'loss_weights': {
-        'physical': PHYSICAL_WEIGHT,
-        'triplet': TRIPLET_WEIGHT,
-        'balance': BALANCE_WEIGHT,
-        'velocity': VELOCITY_WEIGHT
-    },
-    'has_velocity_data': has_velocity
+
+    # 🔥 CRITICAL FIX
+    'sku_feature_columns': list(sku_numeric_df.columns),
+    'bin_feature_columns': list(bin_numeric_df.columns),
 }
 
 with open(MODEL_PATH + "model_metadata.json", 'w') as f:
     json.dump(metadata, f, indent=2)
+
+
+
 
 # -------------------------
 # Quick Statistics
