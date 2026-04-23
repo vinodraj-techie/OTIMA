@@ -1,0 +1,97 @@
+# ===============================
+# Python bytecode & cache
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ===============================
+# Virtual environments
+# ===============================
+venv/
+.venv/
+env/
+ENV/
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+.env.*
+
+# ===============================
+# Jupyter Notebook
+# ===============================
+.ipynb_checkpoints/
+
+# ===============================
+# OS-specific files
+# ===============================
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# ===============================
+# IDE / Editor configs
+# ===============================
+.vscode/
+.idea/
+*.swp
+
+# ===============================
+# Logs & temp files
+# ===============================
+*.log
+*.tmp
+
+# ===============================
+# Build & distribution
+# ===============================
+build/
+dist/
+*.egg-info/
+
+# ===============================
+# Data outputs (IMPORTANT)
+# ===============================
+data/*.csv
+data/*.parquet
+data/*.json
+
+# Keep the folder but not data
+!data/.gitkeep
+
+# ===============================
+# Model artifacts
+# ===============================
+models/
+checkpoints/
+*.pkl
+*.joblib
+
+# ===============================
+# Test & coverage
+# ===============================
+.coverage
+htmlcov/
+.pytest_cache/
+# ===============================
+# Node.js / Frontend
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# ML generated data
+*.npy
+synthetic_data_scripts/derived_data/
