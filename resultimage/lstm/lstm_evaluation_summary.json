@@ -1,0 +1,29 @@
+{
+  "overall_metrics": {
+    "mse": 279.02048502887044,
+    "rmse": 16.703906280534216,
+    "mae": 11.640251189377233,
+    "r2_score": 0.8667892087343843,
+    "mape": 20.540429955999983,
+    "mape_coverage_pct": 99.43903133903133,
+    "mape_threshold": 1.0
+  },
+  "per_sku_averages": {
+    "avg_mae": 11.640251189377233,
+    "avg_mape": 20.80526182676715,
+    "avg_r2": 0.4963442928333747,
+    "skus_with_valid_mape": 1000
+  },
+  "data_info": {
+    "total_predictions": 351000,
+    "num_skus": 1000,
+    "sequence_length": 14
+  },
+  "performance_categories": {
+    "excellent": 0,
+    "very_good": 0,
+    "good": 501,
+    "fair": 496,
+    "poor": 3
+  }
+}
